@@ -5,29 +5,40 @@ import logo from "../assets/img/logo-pequeno.png";
 import setinha from "../assets/img/setinha.png";
 import vetor from "../assets/img/Vector.png";
 
-function Carta(props) {
+function Carta({ pergunta, indice }) {
 
+    const [estado, setEstado] = React.useState("titulo");
+
+    function viraPergunta() {
+        setEstado("pergunta");
+        console.log("OII");
+    }
 
     return (
         <>
             <div className="carta recursive">
-                <h1>
-                    Pergunta {props.inde+1}
-                </h1>
-                <img src={vetor} />
-                {console.log(props.pergunta)}
+                <div className={`titulo ${(estado === "titulo") ? "" : "escondido"}`} onClick={viraPergunta}>
+                    <h1>Pergunta {indice+1}</h1>
+                    <img src={vetor} />
+                    {console.log(pergunta)}
+                </div>
+                <div className={`pergunta ${estado === "pergunta" ? "ativo" : "escondido"}`}>
+                    <h1>PERGUNTA AQUII III IIIII III IIIIIIII III IIIIIIIII IIIIII ?</h1>
+                    <img src={setinha} />
+                </div>
             </div>
         </>
     );
 }
 
 function Cartas() {
+
     const testes = ["a", "b", "c", "d"];
 
     return (
         <>
             <div className="cartas">
-                {testes.map((teste, index) => <Carta key={index} inde={index} pergunta={teste} />)}
+                {testes.map((teste, index) => <Carta key={index} indice={index} pergunta={teste} />)}
             </div>
         </>
     );

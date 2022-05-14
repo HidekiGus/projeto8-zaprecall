@@ -11,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
 .tela-inicial h1 {
@@ -62,6 +63,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+
 }
 
 .logo {
@@ -92,8 +94,9 @@
 
     background-color: #ffffff;
 
-    position: fixed;
+
     bottom: 0;
+    position: fixed;
 
     display: flex;
     align-items: center;
@@ -111,7 +114,7 @@
 
 /* CARTAS */
 
-.carta {
+.carta > * {
     width: 80vw;
     height: 8vh;
 
@@ -125,6 +128,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.pergunta.ativo {
+    height: 16vh;
+    background-color: #ffffd5;
+    display: flex;
+    flex-direction: column;
+}
+
+.pergunta.ativo h1{
+    font-weight: 400;
+    padding-top: 20px;
+}
+
+.pergunta.ativo img{
+    width: 30px;
+    height: 20px;
+    color: #333333;
+    padding-bottom: 10px;
+    padding-left: 300px;
 }
 
 .carta h1{
