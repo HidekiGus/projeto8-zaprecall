@@ -195,14 +195,14 @@
 
 .botoes {
     width: 90%;
-    height: 4vh;
+    height: 5vh;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 }
 
 .botao {
@@ -224,17 +224,49 @@
     margin-top: 0;
 }
 
-.nao-lembrei {
+.respondido {
+    text-decoration: line-through;
+}
+
+.vermelho {
     background-color: #ff3030;
 }
 
-.quase-lembrei {
+.respondido.ativo.vermelho {
+    background-color: #ffffff;
+    text-decoration-color: #ff3030;
+}
+
+.respondido.ativo.vermelho h1{
+    color: #ff3030;
+}
+
+.laranja {
     background-color: #ff922e;
 }
 
-.zap {
+.respondido.ativo.laranja {
+    background-color: #ffffff;
+    text-decoration-color: #ff922e;
+}
+
+.respondido.ativo.laranja h1{
+    color: #ff922e;
+}
+
+.verde {
     background-color: #2fbe34;
 }
+
+.respondido.ativo.verde {
+    background-color: #ffffff;
+    text-decoration-color: #2fbe34;
+}
+
+.respondido.ativo.verde h1{
+    color: #2fbe34;
+}
+
 
 
 /* RESPOSTAS */
