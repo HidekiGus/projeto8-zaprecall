@@ -56,14 +56,16 @@
 
 .tela-cartas {
     background-color: #fb6b6b;
+    min-height: 100vh;
     width: 100vw;
-    height: 100vh;
+    height: auto;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 
+    margin-bottom: 10vh;
 }
 
 .logo {
@@ -130,31 +132,6 @@
     justify-content: space-between;
 }
 
-.pergunta.ativo {
-    height: 16vh;
-    background-color: #ffffd5;
-    display: flex;
-    flex-direction: column;
-}
-
-.pergunta.ativo h1{
-    position: relative;
-    top: 15%;
-    width: 90%;
-
-    font-weight: 400;
-}
-
-.pergunta.ativo img{
-
-    position: relative;
-    left: 40%;
-    bottom: 10% ;
-    width: 30px;
-    height: 20px;
-    color: #333333;
-}
-
 .carta h1{
     font-weight: 700;
     font-size: 16px;
@@ -167,6 +144,100 @@
 }
 
 /* CARTAS */
+
+/* PERGUNTAS */
+
+.pergunta.ativo {
+    height: 16vh;
+    background-color: #ffffd5;
+    display: flex;
+    flex-direction: column;
+}
+
+.pergunta.ativo h1{
+    position: relative;
+    top: 15%;
+    width: 90%;
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.pergunta.ativo img{
+    position: relative;
+    left: 40%;
+    bottom: 10% ;
+    width: 30px;
+    height: 20px;
+    color: #333333;
+}
+
+/* PERGUNTAS */
+
+/* RESPOSTAS */
+
+.resposta.ativo {
+    height: 16vh;
+    background-color: #ffffd5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resposta.ativo h1{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+
+    margin-top: 5%;
+}
+
+.botoes {
+    width: 90%;
+    height: 4vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 5%;
+}
+
+.botao {
+    width: 30%;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.resposta.ativo .botoes .botao h1{
+    color: white;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.nao-lembrei {
+    background-color: #ff3030;
+}
+
+.quase-lembrei {
+    background-color: #ff922e;
+}
+
+.zap {
+    background-color: #2fbe34;
+}
+
+
+/* RESPOSTAS */
 
 /* FONTES */
 
