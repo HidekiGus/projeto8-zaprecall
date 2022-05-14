@@ -2,6 +2,8 @@ import React from "react";
 
 import logo from "../assets/img/logo-pequeno.png";
 
+import sad from "../assets/img/sad.png";
+import party from "../assets/img/party.png";
 import setinha from "../assets/img/setinha.png";
 import vetor from "../assets/img/Vector.png";
 
@@ -10,7 +12,7 @@ import vermelho from "../assets/img/vermelho.png";
 import verde from "../assets/img/verde.png";
 
 
-function Carta({ resposta, pergunta, indice, aumentarConcluidos }) {
+function Carta({ resposta, pergunta, indice, aumentarConcluidos, aumentarVermelhos }) {
 
     const [imagem, setImagem] = React.useState();
     const [estado, setEstado] = React.useState("titulo");
@@ -29,6 +31,7 @@ function Carta({ resposta, pergunta, indice, aumentarConcluidos }) {
         setImagem(vermelho);
         setCor("vermelho");
         aumentarConcluidos(vermelho);
+        aumentarVermelhos();
     }
 
     function viraRespondidoLaranja() {
@@ -86,9 +89,9 @@ function Carta({ resposta, pergunta, indice, aumentarConcluidos }) {
     );
 }
 
-function Cartas({concluidos, setConcluidos, imagemConcluidos, setImagemConcluidos}) {
+function Cartas({concluidos, setConcluidos, imagemConcluidos, setImagemConcluidos, totalVermelhos, setTotalVermelhos}) {
 
-    const testes = [
+    const deck = [
         ["O que é JSX ?", "Uma extensão de linguagem do JavaScript"],
         ["O React é __", "uma biblioteca JavaScript para construção de interfaces"],
         ["Componentes devem iniciar com __", "letra maiúscula"],
@@ -107,10 +110,10 @@ function Cartas({concluidos, setConcluidos, imagemConcluidos, setImagemConcluido
         return Math.random() - 0.5;
     }
 
-    testes.sort(embaralhar);
+    deck.sort(embaralhar);
 
     for (let i=0; i<perguntas; i++) {
-        perguntasSelecionadas.push(testes[i]);
+        perguntasSelecionadas.push(deck[i]);
     }
 
     function aumentarConcluidos(cor) {
@@ -118,10 +121,14 @@ function Cartas({concluidos, setConcluidos, imagemConcluidos, setImagemConcluido
         setImagemConcluidos([...imagemConcluidos, cor]);
     }
 
+    function aumentarVermelhos() {
+        setTotalVermelhos(totalVermelhos + 1);
+    }
+
     return (
         <>
             <div className="cartas">
-                {perguntasSelecionadas.map((perguntasSelecionada, index) => <Carta key={index} indice={index} pergunta={perguntasSelecionada[0]} resposta={perguntasSelecionada[1]} aumentarConcluidos={aumentarConcluidos} />)}
+                {perguntasSelecionadas.map((perguntasSelecionada, index) => <Carta key={index} indice={index} pergunta={perguntasSelecionada[0]} resposta={perguntasSelecionada[1]} aumentarConcluidos={aumentarConcluidos} aumentarVermelhos={aumentarVermelhos}/>)}
             </div>
         </>
     );
@@ -132,8 +139,7 @@ export default function TelaCartas({ estado }) {
     const[imagemConcluidos, setImagemConcluidos] = React.useState([]);
     const[concluidos, setConcluidos] = React.useState(0);
     const[totalConcluidos, setTotalConcluidos] = React.useState(4);
-
-    console.log(imagemConcluidos)
+    const[totalVermelhos, setTotalVermelhos] = React.useState(0);
 
     return (
         <>
@@ -142,8 +148,34 @@ export default function TelaCartas({ estado }) {
                     <img src={logo} alt="logo-pequeno" />
                     <h1>ZapRecall</h1>
                 </div>
-                <Cartas concluidos={concluidos} setConcluidos={setConcluidos} imagemConcluidos={imagemConcluidos} setImagemConcluidos={setImagemConcluidos}/>
+                <Cartas concluidos={concluidos} setConcluidos={setConcluidos} imagemConcluidos={imagemConcluidos} setImagemConcluidos={setImagemConcluidos} totalVermelhos={totalVermelhos} setTotalVermelhos={setTotalVermelhos}/>
                 <div className="concluidos recursive">
+                    {(concluidos === 4) ? 
+                    <>
+                        <div className="resultado">
+                            {(totalVermelhos === 0) ?
+                            <>
+                                <div>
+                                    <img src={party} />
+                                    <span>Parabéns!</span>
+                                </div>
+                                <h1>
+                                    Você não esqueceu de <br></br> nenhum flashcard!
+                                </h1>
+                            </> :
+                            <>
+                                <div>
+                                    <img src={sad} />
+                                    <span>Putz...</span>
+                                </div>
+                                <h1>
+                                    Ainda faltam alguns... <br></br> Mas não desanime!
+                                </h1>
+                            </>
+                            }
+                            
+                        </div>
+                    </> : <></>}
                     <h1>{concluidos}/{totalConcluidos} CONCLUÍDOS</h1>
                     {(concluidos > 0) ? 
                     <>
