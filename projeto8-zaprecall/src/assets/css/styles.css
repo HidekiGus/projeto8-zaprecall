@@ -103,6 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
 }
@@ -270,6 +271,21 @@
 
 
 /* RESPOSTAS */
+
+.icones-concluidos {
+    width: 100%;
+    height: 40%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icones-concluidos img {
+    width: 23px;
+    height: 23px;
+    margin-right: 6px;
+}
 
 /* FONTES */
 

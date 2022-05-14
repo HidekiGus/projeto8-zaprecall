@@ -28,21 +28,21 @@ function Carta({ resposta, pergunta, indice, aumentarConcluidos }) {
         setEstado("respondido");
         setImagem(vermelho);
         setCor("vermelho");
-        aumentarConcluidos();
+        aumentarConcluidos(vermelho);
     }
 
     function viraRespondidoLaranja() {
         setEstado("respondido");
         setImagem(laranja);
         setCor("laranja");
-        aumentarConcluidos();
+        aumentarConcluidos(laranja);
     }
 
     function viraRespondidoVerde() {
         setEstado("respondido");
         setImagem(verde);
         setCor("verde");
-        aumentarConcluidos();
+        aumentarConcluidos(verde);
     }
 
     function daOi() {
@@ -115,7 +115,7 @@ function Cartas({concluidos, setConcluidos, imagemConcluidos, setImagemConcluido
 
     function aumentarConcluidos(cor) {
         setConcluidos(concluidos + 1);
-        setImagemConcluidos(imagemConcluidos + cor)
+        setImagemConcluidos([...imagemConcluidos, cor]);
     }
 
     return (
@@ -133,6 +133,8 @@ export default function TelaCartas({ estado }) {
     const[concluidos, setConcluidos] = React.useState(0);
     const[totalConcluidos, setTotalConcluidos] = React.useState(4);
 
+    console.log(imagemConcluidos)
+
     return (
         <>
             <div className={`tela-cartas ${estado ? "" : "escondido"}`}>
@@ -143,6 +145,12 @@ export default function TelaCartas({ estado }) {
                 <Cartas concluidos={concluidos} setConcluidos={setConcluidos} imagemConcluidos={imagemConcluidos} setImagemConcluidos={setImagemConcluidos}/>
                 <div className="concluidos recursive">
                     <h1>{concluidos}/{totalConcluidos} CONCLUÍDOS</h1>
+                    {(concluidos > 0) ? 
+                    <>
+                        <div className="icones-concluidos">
+                            {imagemConcluidos.map(imagemConcluido => <img src={imagemConcluido} />)}
+                        </div>
+                    </> : <></>}
                 </div>
             </div>
         </>
